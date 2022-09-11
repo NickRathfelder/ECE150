@@ -4,5 +4,10 @@ int main();
 
 int main()
 {
-    std::cout << "Fart" << std::endl;
+    int End {10};
+    for (int start {1}; start >= End; ++start)
+    {
+        std::cout << start << std::endl;
+    }
+
 }
