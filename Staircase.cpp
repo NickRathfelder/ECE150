@@ -32,4 +32,5 @@ int main()
     std::cout << "The value of stair(x) is: ";
     std::cout << stair;
     std::cout << std::endl;
+    return 0;
 }
