@@ -7,28 +7,50 @@ int main();
 //Definition of function
 int main()
 {
+    int x{0};
+    bool is_True{1};
+    
     //Variable
     int n{0};
     //Never say n = a value, always say n is assigned a value 
 
     //Standard (std) commands from iostream
-    std::cout << "Enter an integer" << std::endl;
+    std::cout << "Hello World" << std::endl;
     std::cin >> n;
     std::cout << "n = " << n << std::endl;
 
     //Conditional operators (if, else if, else)
     if (n > 0)
     {
-        std::cout << "n (=" << n << " ) is positive"
-        << std::endl;
+        //Only if this condition is true
     }
     else if(n == 0)
     {
-        std::cout << "n is zero" << std::endl;
+        //Only runs if the first failed and this condition is true
     }
     else
     {
-        std::cout << "n (= " << n << ") is negative" << std::endl; 
+        //Only occurs if all other conditions are false
+    }
+
+    //Logical operators (and, not, or)
+
+    //AND
+    if ((x >= -10) && (x <= 10))
+    {
+        //Runs if and only if both statements are true
+    }
+
+    //OR
+    if ( (x<50) || (x>-50) )
+    {
+        //Runs if either one of the conditions is true
+    }
+
+    //NOT
+    if (!is_True);
+    {
+        //Runs if the opposite of the condition is true (in this case when is_True is false)
     }
     return 0;
 }
