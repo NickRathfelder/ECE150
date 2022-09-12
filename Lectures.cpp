@@ -53,5 +53,23 @@ int main()
         //Runs if the opposite of the condition is true (in this case when is_True is false)
     }
     return 0;
+
+    //Is a coordinate inside a circle of radius 100
+    int xcord{0};
+    int ycord{0};
+
+    std::cout << "Enter the x coordinate" << std::endl;
+    std::cin >> xcord;
+    std::cout << "Enter the y coordinate" << std::endl;
+    std::cin >> ycord;
+
+    if ((xcord * xcord + ycord * ycord) <= 100)
+    {
+        std::cout << "The point is inside a circle of radius 100" << std::endl;
+    }
+    else
+    {
+        std::cout << "The point is outside the circle" << std::endl;
+    }
 }
 //Identifiers: Start[_a-zA-Z] Rest[_a-zA-Z0-9]
