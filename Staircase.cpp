@@ -21,11 +21,11 @@ int main()
     }
     else
     {
-        for (int i {0}; i >=x; --i)
+        for (int f {0}; f >=x; --f)
         {
-            if ( x-i > -1.0)
+            if ( x-f > -1.0)
             {
-                stair = i-1;
+                stair = f-1;
             }
         }
     }
