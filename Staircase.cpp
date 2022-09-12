@@ -23,10 +23,15 @@ int main()
     {
         for (int f {0}; f >=x; --f)
         {
-            if ( x-f > -1.0)
+            if (f == x)
+            {
+                stair = f;
+            }
+            else if ( x-f > -1.0)
             {
                 stair = f-1;
             }
+
         }
     }
     std::cout << "The value of stair(x) is: ";
