@@ -25,7 +25,7 @@ int main()
         {
             if ( x-i > -1.0)
             {
-                stair = i;
+                stair = i-1;
             }
         }
     }
