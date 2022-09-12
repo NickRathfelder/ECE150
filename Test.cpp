@@ -4,7 +4,7 @@ int main();
 
 int main()
 {
-    int End {20};
+    int End {30};
     for (int start {1}; start <= End; ++start)
     {
         std::cout << start << std::endl;
