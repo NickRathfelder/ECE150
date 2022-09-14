@@ -73,7 +73,7 @@ int main()
     }
     for (int x{0};x >= 100; ++x )
     {
-        // Consists of 
+        // Consists of a declaration, condition, and 
     }
 }
 //Identifiers: Start[_a-zA-Z] Rest[_a-zA-Z0-9]
