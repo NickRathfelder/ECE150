@@ -5,6 +5,17 @@
 int main();
 #endif
 
+int ex(int n, int m);
+
+int ex(int n, int m)
+{
+	int result{1};
+	for(int f = 0;f < m; ++f)
+	{
+		result *=n;
+	}
+	return result;
+}
 unsigned int add_checksum( unsigned int n );
 
 unsigned int add_checksum(unsigned int n)
@@ -14,33 +25,37 @@ unsigned int add_checksum(unsigned int n)
 
 	if ((n > 0) && (n < UINT_MAX))
 	{
+		int tempN{0};
 		int temp{0};
 		int sum{0};
 
-		for (int i{8}; i > 0; --i)
+		tempN = n;
+		for (int i{7}; i >= 0; --i)
 		{
-			if (n % (10^i) == 0 )
+			if (tempN /(ex(10,i)) == 0 )
 			{
 				continue;
 			}
-			else if ((i+1) % 2 == 0 )
+			else if (i % 2 == 0)
 			{
-				temp = n/(10^i) * 2;
+				temp = (tempN/(ex(10,i))) * 2;
 				while(temp > 9)
 				{
-					temp = temp/10 +temp%10;
+					temp = (temp/10) + (temp%10);
 				}
 			}
 			else
 			{
-				temp = n/10*i;
+				temp = tempN/(ex(10,i));
 			}
-				sum += temp * 10^i;
+			sum += temp;
+			tempN = tempN % (ex(10,i));
 		}
 		d = (sum*9) % 10;
 		n = n * 10 + d;
 
-		return n;
+	return n;
+
 	} 
 	else
 	{
