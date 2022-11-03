@@ -1,4 +1,5 @@
 #include "geesespotter_lib.h"
+
 #include <iostream>
 
 char *createBoard(std::size_t xdim, std::size_t ydim);
