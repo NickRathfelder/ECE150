@@ -73,6 +73,22 @@ int mark(char *board, std::size_t xdim, std::size_t ydim, std::size_t xloc, std:
         return 2;
     }
 }
-void computeNeighbors(char *board,std::size_t xdim,std::size_t ydim, std::size_t xloc,std::size_t yloc);
-int reveal(char *board, std::size_t xdim, std::size_t ydim);
+void computeNeighbors(char *board,std::size_t xdim,std::size_t ydim);
+
+void computeNeighbors(char *board,std::size_t xdim,std::size_t ydim)
+{
+
+}
+
+
+int reveal(char *board, std::size_t xdim, std::size_t ydim, std::size_t xloc,std::size_t yloc);
+int reveal(char *board, std::size_t xdim, std::size_t ydim, std::size_t xloc,std::size_t yloc)
+{
+    return 0;
+}
+
 bool isGameWon(char *board,std::size_t xdim,std::size_t ydim);
+bool isGameWon(char *board,std::size_t xdim,std::size_t ydim)
+{
+    return true;
+}
