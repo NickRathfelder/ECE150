@@ -72,10 +72,3 @@ int mark(char *board, std::size_t xdim, std::size_t ydim, std::size_t xloc, std:
         return 2;
     }
 }
-int main();
-int main()
-{
-    std::cout << "The array is a two by two" << std::endl;
-    char *array = createBoard(2,2);
-    printBoard(array,2,2);
-}
