@@ -47,6 +47,7 @@ void printBoard(char *board, std::size_t xdim, std::size_t ydim)
             }
             sum += 1;
         }
+        std::cout "\n";
     }
 }
 
@@ -90,4 +91,15 @@ bool isGameWon(char *board,std::size_t xdim,std::size_t ydim);
 bool isGameWon(char *board,std::size_t xdim,std::size_t ydim)
 {
     return true;
+}
+int main();
+
+int main()
+{
+    char array = createBoard(3,3);
+    for(int i{0}; i<=9;++i)
+    {
+        array[i] = i;
+    }
+    printboard(array,3,3);
 }
