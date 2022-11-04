@@ -17,4 +17,5 @@ char hiddenBit();
 char valueMask();
 void spreadGeese(char * board, std::size_t xdim, std::size_t ydim, unsigned int numgeese);
 
+
 #endif

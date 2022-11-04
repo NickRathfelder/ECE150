@@ -8,9 +8,14 @@
 
 int main()
 {
-  srand(time(NULL));
-  game();
-  return 0;
+  char *array = createBoard(3,3);
+  for(int i{0}; i<=8;++i)
+  {
+    array[i] = i+32;
+  }
+  array[3] = 4;
+  mark(array,3,3,1,3);
+  printBoard(array,3,3);
 }
 
 bool game()
