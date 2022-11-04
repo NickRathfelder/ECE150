@@ -30,6 +30,10 @@ void printBoard(char *board, std::size_t xdim, std::size_t ydim)
     std::size_t sum{0};
     for(std::size_t f{0}; f < xdim*ydim; ++f)
     {
+        if((f % xdim == 0) && (f!=0))
+        {
+            std::cout << "\n";
+        }
         if(board[sum] & markedBit())
         {
             std::cout << "M";
