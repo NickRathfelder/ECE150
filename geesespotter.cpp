@@ -19,7 +19,7 @@ void cleanBoard(char *board);
 
 void cleanBoard(char *board)
 {
-    delete board;
+    delete[] board;
     board = nullptr;
 }
 
@@ -45,7 +45,6 @@ void printBoard(char *board, std::size_t xdim, std::size_t ydim)
             {
                 std::cout << (board[sum] & valueMask());
             }
-            std::cout << " ";
             sum += 1;
         }
         std::cout << "\n";
@@ -56,7 +55,7 @@ void hideBoard(char *board, std::size_t xdim, std::size_t ydim);
 
 void hideBoard(char *board, std::size_t xdim, std::size_t ydim)
 {
-    for(std::size_t i; i<= (xdim*ydim); ++i)
+    for(std::size_t i{0}; i<= (xdim*ydim); ++i)
     {
         board[i] |= hiddenBit();
     }
