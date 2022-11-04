@@ -47,7 +47,6 @@ void printBoard(char *board, std::size_t xdim, std::size_t ydim)
             }
             sum += 1;
         }
-        std::cout << "\n";
     }
 }
 
