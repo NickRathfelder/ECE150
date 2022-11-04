@@ -47,6 +47,7 @@ void printBoard(char *board, std::size_t xdim, std::size_t ydim)
             }
             sum += 1;
         }
+        std::cout << "\n";
     }
 }
 
@@ -61,12 +62,17 @@ void hideBoard(char *board, std::size_t xdim, std::size_t ydim)
 }
 int mark(char *board, std::size_t xdim, std::size_t ydim, std::size_t xloc, std::size_t yloc)
 {
-    std::size_t position {xloc-1 + (xdim*(yloc-1))};
-    if (board[position] & hiddenBit())
+    std::size_t position {xloc + (xdim*(yloc))};
+    std::size_t newPos{0};
+    if(board[position] & hiddenBit())
     {
         //if hidden
-        board[position] ^= markedBit();
-        std::cout << board[position];
+        std::cout << "Old Value: " << board[position];
+        newPos = board[position] ^ markedBit();
+        std::cout << newPos;
+        board[position] = newPos;
+        std::cout << "New value: " << board[position];
+        std::cout << "\n";
         return 0;
     }
     else

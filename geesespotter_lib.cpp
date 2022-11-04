@@ -13,8 +13,8 @@ int main()
   {
     array[i] = i+32;
   }
-  array[3] = 4;
-  mark(array,3,3,1,3);
+  array[3] = 3;
+  mark(array,3,3,1,1);
   printBoard(array,3,3);
 }
 
