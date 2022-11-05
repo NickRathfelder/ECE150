@@ -14,7 +14,7 @@ int main()
     array[i] = i+32;
   }
   array[3] = 4;
-  mark(array,3,3,2,2);
+  mark(array,3,3,0,2);
   printBoard(array,3,3);
 }
 
