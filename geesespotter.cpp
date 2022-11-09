@@ -76,48 +76,76 @@ void computeNeighbors(char *board,std::size_t xdim,std::size_t ydim);
 
 void computeNeighbors(char *board,std::size_t xdim,std::size_t ydim)
 {
-
+    std::size_t xloc{0};
+    std::size_t yloc{0};
+    std::size_t sum{0};
+    for(std::size_t i{0}; i< xdim*ydim; ++i)
+    {
+        std::cout << i << ": ";
+        sum = 0;
+        xloc = i % ydim;
+        yloc = i / ydim;
+        if((board[i] & valueMask()) == 9)
+        {
+            std::cout << sum << "\n";
+            continue;
+        }
+        else
+        {
+            for (int x{-1}; x<2; ++x)
+            {
+                for(int y{-1}; y<2; ++y)
+                {
+                    if ((xloc+x >(xdim*ydim - 1)) || (xloc+x > xdim-1) || ((yloc +y) > (xdim*ydim - 1) || ((yloc + y) > ydim-1)))
+                    {
+                        continue;
+                    }
+                    else if((board[(xloc+x) + (xdim*(yloc+y))] & valueMask()) == 9)
+                    {
+                        sum+=1;
+                    }
+                }
+            }
+        }
+        std::cout << sum << "\n";
+        board[i] &= sum;
+    }
 }
 
-
 int reveal(char *board, std::size_t xdim, std::size_t ydim, std::size_t xloc,std::size_t yloc);
+
 int reveal(char *board, std::size_t xdim, std::size_t ydim, std::size_t xloc,std::size_t yloc)
 {
     std::size_t position {xloc + (xdim*(yloc))};
     if(board[position] & markedBit())
     {
-        std::cout <<"Zero";
         return 0;
     }
     else if((board[position] & hiddenBit()) == false)
     {
-        std::cout << "Two";
         return 2;
     }
     else
     //reveal
     {
         board[position] &= ~hiddenBit();
-        int x{xloc};
-        int y{yloc};
         if((board[position] & valueMask()) == 9)
         {
-            std::cout << "Nine";
             return 9;
         }
         else if((board[position] & valueMask()) == 0)
         {
-            for (int xAdd{-1}; xAdd<2; ++xAdd)
+            for (int x{-1}; x<2; ++x)
             {
-                for(int yAdd{-1}; yAdd<2; ++yAdd)
+                for(int y{-1}; y<2; ++y)
                 {
-                    if ((x+xAdd < 0) || (x+xAdd > xdim-1) || (y+yAdd <0) || (y+yAdd > ydim-1))
+                    if ((xloc+x >(xdim*ydim - 1)) || (xloc+x > xdim-1) || ((yloc +y) > (xdim*ydim - 1) || ((yloc + y) > ydim-1)))
                     {
                         continue;
                     }
                     else
                     {
-                       board[(xloc+xAdd) + (xdim*(yloc+yAdd))] &= ~hiddenBit();
+                       board[(xloc+x) + (xdim*(yloc+y))] &= ~hiddenBit();
                     }
                 }
             }
@@ -130,7 +158,6 @@ int reveal(char *board, std::size_t xdim, std::size_t ydim, std::size_t xloc,std
         
     }
 }
-
 bool isGameWon(char *board,std::size_t xdim,std::size_t ydim);
 bool isGameWon(char *board,std::size_t xdim,std::size_t ydim)
 {

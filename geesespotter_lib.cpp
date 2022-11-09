@@ -13,14 +13,13 @@ int main()
   {
     array[i] = 34;
   }
-  array[6] = 32;
-  array[13] = 32;
+  array[3] = 41;
+  array[9] = 41;
   array[15] = 41;
-  array[3] = 4;
   mark (array,4,4,1,1);
   printBoard(array,4,4);
   std::cout << "\n" << "\n";
-  reveal(array, 4,4,3,0);
+  computeNeighbors(array,4,4);
   printBoard(array, 4,4);
 }
 

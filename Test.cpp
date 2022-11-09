@@ -4,11 +4,17 @@ int main();
 
 int main()
 {
-    int End {30};
-    for (int start {1}; start <= End; ++start)
+    std::size_t i{0};
+    for (int x{-1}; x<2; ++x)
     {
-        std::cout << start << std::endl;
+        if((i+x) >2)
+        {
+            continue;
+        }
+        else
+        {
+            std::cout << (i+x);
+        }
     }
-    return 0;
 
 }
