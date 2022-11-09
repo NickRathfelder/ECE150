@@ -8,7 +8,7 @@ char *createBoard(std::size_t xdim, std::size_t ydim)
 {
     char *board{new char[xdim*ydim]{}};
 
-    for(std::size_t i{0}; i <= (xdim*ydim);++i)
+    for(std::size_t i{0}; i < (xdim*ydim);++i)
     {
         board[i] = 0;
     }
@@ -81,14 +81,12 @@ void computeNeighbors(char *board,std::size_t xdim,std::size_t ydim)
     std::size_t sum{0};
     for(std::size_t i{0}; i< xdim*ydim; ++i)
     {
-        std::cout << i << ": ";
         sum = 0;
         xloc = i % ydim;
         yloc = i / ydim;
         if((board[i] & valueMask()) == 9)
         {
-            std::cout << sum << "\n";
-            continue;
+            //continue;
         }
         else
         {
@@ -106,9 +104,8 @@ void computeNeighbors(char *board,std::size_t xdim,std::size_t ydim)
                     }
                 }
             }
+            board[i] |= sum;
         }
-        std::cout << sum << "\n";
-        board[i] &= sum;
     }
 }
 
@@ -126,7 +123,6 @@ int reveal(char *board, std::size_t xdim, std::size_t ydim, std::size_t xloc,std
         return 2;
     }
     else
-    //reveal
     {
         board[position] &= ~hiddenBit();
         if((board[position] & valueMask()) == 9)

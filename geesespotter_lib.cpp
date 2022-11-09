@@ -11,8 +11,9 @@ int main()
   char *array = createBoard(4,4);
   for(int i{0}; i<=15;++i)
   {
-    array[i] = 34;
+    array[i] = 32;
   }
+  
   array[3] = 41;
   array[9] = 41;
   array[15] = 41;
