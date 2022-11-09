@@ -8,14 +8,20 @@
 
 int main()
 {
-  char *array = createBoard(3,3);
-  for(int i{0}; i<=8;++i)
+  char *array = createBoard(4,4);
+  for(int i{0}; i<=15;++i)
   {
-    array[i] = i+32;
+    array[i] = 34;
   }
+  array[6] = 32;
+  array[13] = 32;
+  array[15] = 41;
   array[3] = 4;
-  mark(array,3,3,0,2);
-  printBoard(array,3,3);
+  mark (array,4,4,1,1);
+  printBoard(array,4,4);
+  std::cout << "\n" << "\n";
+  reveal(array, 4,4,3,0);
+  printBoard(array, 4,4);
 }
 
 bool game()

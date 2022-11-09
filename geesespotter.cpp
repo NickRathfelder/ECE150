@@ -83,11 +83,67 @@ void computeNeighbors(char *board,std::size_t xdim,std::size_t ydim)
 int reveal(char *board, std::size_t xdim, std::size_t ydim, std::size_t xloc,std::size_t yloc);
 int reveal(char *board, std::size_t xdim, std::size_t ydim, std::size_t xloc,std::size_t yloc)
 {
-    return 0;
+    std::size_t position {xloc + (xdim*(yloc))};
+    if(board[position] & markedBit())
+    {
+        std::cout <<"Zero";
+        return 0;
+    }
+    else if((board[position] & hiddenBit()) == false)
+    {
+        std::cout << "Two";
+        return 2;
+    }
+    else
+    //reveal
+    {
+        board[position] &= ~hiddenBit();
+        int x{xloc};
+        int y{yloc};
+        if((board[position] & valueMask()) == 9)
+        {
+            std::cout << "Nine";
+            return 9;
+        }
+        else if((board[position] & valueMask()) == 0)
+        {
+            for (int xAdd{-1}; xAdd<2; ++xAdd)
+            {
+                for(int yAdd{-1}; yAdd<2; ++yAdd)
+                {
+                    if ((x+xAdd < 0) || (x+xAdd > xdim-1) || (y+yAdd <0) || (y+yAdd > ydim-1))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                       board[(xloc+xAdd) + (xdim*(yloc+yAdd))] &= ~hiddenBit();
+                    }
+                }
+            }
+            return 0;
+        }
+        else
+        {
+            return 0;
+        }
+        
+    }
 }
 
 bool isGameWon(char *board,std::size_t xdim,std::size_t ydim);
 bool isGameWon(char *board,std::size_t xdim,std::size_t ydim)
 {
+    for (std::size_t i{0}; i < (xdim*ydim); ++i)
+    {
+        if(((board[i] & hiddenBit()) == false) || ((board[i] & valueMask()) == 9))
+        {
+            continue;
+        }
+        else
+        {
+            return false;
+        }
+    }
     return true;
 }
