@@ -8,20 +8,9 @@
 
 int main()
 {
-  char *array = createBoard(4,4);
-  for(int i{0}; i<=15;++i)
-  {
-    array[i] = 32;
-  }
-  
-  array[3] = 41;
-  array[9] = 41;
-  array[15] = 41;
-  mark (array,4,4,1,1);
-  printBoard(array,4,4);
-  std::cout << "\n" << "\n";
-  computeNeighbors(array,4,4);
-  printBoard(array, 4,4);
+  srand(time(NULL));
+  game();
+  return 0;
 }
 
 bool game()
