@@ -83,11 +83,13 @@ void computeNeighbors(char *board,std::size_t xdim,std::size_t ydim)
     for(std::size_t i{0}; i< xdim*ydim; ++i)
     {
         sum = 0;
-        xloc = i % ydim;
-        yloc = i / ydim;
+        xloc = i % xdim;
+        yloc = i / xdim;
+
+        std::cout << "Location is (" << xloc << "," << yloc << ")." << "\n";
         if((board[i] & valueMask()) == 9)
         {
-            //continue;
+            continue;
         }
         else
         {

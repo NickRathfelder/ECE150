@@ -8,9 +8,21 @@
 
 int main()
 {
-  srand(time(NULL));
-  game();
-  return 0;
+    std::size_t xdim{5};
+    std::size_t ydim{4};
+    char *array = createBoard(xdim,ydim);
+    for(int i{0}; i < (xdim*ydim);++i)
+    {
+      array[i] = 0;
+    }
+    array[3] = 41;
+    array[5] = 41;
+    array[14] = 41;
+    printBoard(array,xdim,ydim);
+    computeNeighbors(array,xdim,ydim);
+    std::cout << "\n";
+    printBoard(array,xdim,ydim);
+
 }
 
 bool game()
