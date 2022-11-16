@@ -15,22 +15,41 @@ class Transaction;
 // TASK 1
 Transaction::Transaction( std::string ticker_symbol, unsigned int day_date, unsigned int month_date, unsigned year_date, bool buy_sell_trans, unsigned int number_shares, double trans_amount)
 :symbol{ticker_symbol},day{day_date},month{month_date},year{year_date},trans_type{},shares{number_shares},amount{trans_amount},trans_id{assigned_trans_id}
-{}
+{
+  assigned_trans_id +=1;
+  if (buy_sell_trans == true)
+  {
+    trans_type = "Buy";
+  }
+  else
+  {
+    trans_type = "Sell";
+  }
+}
 
 // Destructor
 // TASK 1
 //
 Transaction::~Transaction()
-{
-
-}
+{}
 
 // Overloaded < operator.
 // TASK 2
 //
 bool Transaction::operator<( Transaction const &other )
 {
-
+  if((year == other.year) && (month == other.month) && (day == other.day) && (trans_id > other.trans_id))
+  {
+    return true
+  }
+  else if((year < other.year) || ((year = other.year) && (month < other.month)) || ((year = other.year) && (month = other.month) && (day < other.day)))
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 // GIVEN
