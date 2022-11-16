@@ -9,23 +9,32 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Definitions for Transaction class
 ////////////////////////////////////////////////////////////////////////////////
-//
-//
+class Transaction;
 
 // Constructor
 // TASK 1
-//
+Transaction::Transaction( std::string ticker_symbol, unsigned int day_date, unsigned int month_date,
+unsigned year_date, bool buy_sell_trans, unsigned int number_shares, double trans_amount
+)
+{
 
-
+}
 
 // Destructor
 // TASK 1
 //
+Transaction::~Transaction()
+{
 
+}
 
 // Overloaded < operator.
 // TASK 2
 //
+bool Transaction::operator<( Transaction const &other )
+{
+
+}
 
 // GIVEN
 // Member functions to get values.
@@ -83,48 +92,69 @@ void Transaction::print() {
 ////////////////////////////////////////////////////////////////////////////////
 //
 //
-
+class History;
 
 // Constructor
 // TASK 3
 //
+History::History()
+{
 
-
+}
 // Destructor
 // TASK 3
 //
+History::~History()
+{
 
-
-
+}
 // read_history(...): Read the transaction history from file.
 // TASK 4
 //
+void History::read_history()
+{
+
+}
 
 // insert(...): Insert transaction into linked list.
 // TASK 5
 //
 
+void History::insert(Transaction *p_new_trans)
+{
+
+}
 
 // sort_by_date(): Sort the linked list by trade date.
 // TASK 6
 //
+void History::sort_by_date()
+{
 
-
+}
 // update_acb_cgl(): Updates the ACB and CGL values.
 // TASK 7
 //
+void History::update_acb_cgl()
+{
 
+}
 
 
 // compute_cgl(): )Compute the ACB, and CGL.
 // TASK 8
+double History::compute_cgl(unsigned int year)
+{
 
-
-
+}
 
 // print() Print the transaction history.
 //TASK 9
 //
+void History::print()
+{
+
+}
 
 
 
