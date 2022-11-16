@@ -13,12 +13,9 @@ class Transaction;
 
 // Constructor
 // TASK 1
-Transaction::Transaction( std::string ticker_symbol, unsigned int day_date, unsigned int month_date,
-unsigned year_date, bool buy_sell_trans, unsigned int number_shares, double trans_amount
-)
-{
-
-}
+Transaction::Transaction( std::string ticker_symbol, unsigned int day_date, unsigned int month_date, unsigned year_date, bool buy_sell_trans, unsigned int number_shares, double trans_amount)
+:symbol{ticker_symbol},day{day_date},month{month_date},year{year_date},trans_type{},shares{number_shares},amount{trans_amount},trans_id{assigned_trans_id}
+{}
 
 // Destructor
 // TASK 1
