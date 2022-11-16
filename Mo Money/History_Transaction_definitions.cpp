@@ -40,7 +40,7 @@ bool Transaction::operator<( Transaction const &other )
 {
   if((year == other.year) && (month == other.month) && (day == other.day) && (trans_id > other.trans_id))
   {
-    return true
+    return true;
   }
   else if((year < other.year) || ((year = other.year) && (month < other.month)) || ((year = other.year) && (month = other.month) && (day < other.day)))
   {
