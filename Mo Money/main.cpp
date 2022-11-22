@@ -23,5 +23,6 @@ int main() {
   std::cout << "[CGL for 2019    ]: " << trans_history.compute_cgl(2019) << std::endl;
 
   return 0;
+  
 }
 #endif
