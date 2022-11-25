@@ -120,8 +120,12 @@ History::History():p_head{nullptr}
 //
 History::~History()
 {
-  delete p_head;
-  p_head = nullptr;
+  Transaction *temp{p_head};
+  Transaction *iterate{p_head};
+  while(iterate->get_next() != nullptr)
+  {
+
+  }
 }
 // read_history(...): Read the transaction history from file.
 // TASK 4
@@ -145,7 +149,7 @@ void History::insert(Transaction *p_new_trans)
 {
   if (p_head == nullptr)
   {
-    p_head = p_new_trans;
+    p_head = p_new_trans->get_next();
   }
   else
   {
