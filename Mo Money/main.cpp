@@ -5,24 +5,18 @@
 
 #ifndef MARMOSET_TESTING
 unsigned int Transaction::assigned_trans_id = 0;
-int main() {
-  History trans_history{};
-  trans_history.read_history();
+int main() 
+{
+  Transaction *T1(new Transaction("fart",19,10,2021,true,6,53.0));
+  Transaction *T2(new Transaction("balls",20,10,2020,false,6,54));
 
-  std::cout << "[Starting history]:" << std::endl;
-  trans_history.print();
-  trans_history.sort_by_date();
-
-  std::cout << "[Sorted          ]:" << std::endl;
-  trans_history.print();
-
-  trans_history.update_acb_cgl();
-  trans_history.print();
-
-  std::cout << "[CGL for 2018    ]: " << trans_history.compute_cgl(2018) << std::endl;
-  std::cout << "[CGL for 2019    ]: " << trans_history.compute_cgl(2019) << std::endl;
-
-  return 0;
-  
+  if(*T1 < *T2)
+  {
+    std::cout << ", T1 is older than T2";
+  }
+  else
+  {
+    std::cout << "T1 is younger than T2 ";
+  }
 }
 #endif
