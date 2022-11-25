@@ -120,8 +120,8 @@ History::History():p_head{nullptr}
 //
 History::~History()
 {
-  p_head = nullptr;
   delete p_head;
+  p_head = nullptr;
 }
 // read_history(...): Read the transaction history from file.
 // TASK 4
