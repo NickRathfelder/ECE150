@@ -121,15 +121,14 @@ History::History():p_head{nullptr}
 //
 History::~History()
 {
-  Transaction *temp{p_head};
-  if (temp != nullptr)
-  {
-    while(temp->get_next() != nullptr)
+  /*Transaction *temp{p_head};
+    while(temp != nullptr)
     {
       temp = temp->get_next();
       delete temp;
-    }
-  }
+      p_head = temp;
+  }*/
+  delete p_head;
   p_head = nullptr;
 }
 // read_history(...): Read the transaction history from file.
