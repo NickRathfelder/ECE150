@@ -120,25 +120,25 @@ History::History():p_head{nullptr}
 //
 History::~History()
 {
-  Transaction *temp{p_head};
+  /*Transaction *temp{p_head};
   Transaction *iterate{p_head};
   while(iterate->get_next() != nullptr)
   {
 
-  }
+  }*/
 }
 // read_history(...): Read the transaction history from file.
 // TASK 4
 //
 void History::read_history()
-{
+{/*
   ece150::open_file();
   while(ece150::next_trans_entry() == true)
   {
     Transaction *pointer (new Transaction(ece150::get_trans_symbol(),ece150::get_trans_day(),ece150::get_trans_month(),ece150::get_trans_year(),ece150::get_trans_type(),ece150::get_trans_shares(),ece150::get_trans_amount()));
     insert(pointer);
   }
-  ece150::close_file();
+  ece150::close_file();*/
 }
 
 // insert(...): Insert transaction into linked list.
@@ -147,9 +147,9 @@ void History::read_history()
 
 void History::insert(Transaction *p_new_trans)
 {
-  if (p_head == nullptr)
+ /* if (p_head == nullptr)
   {
-    p_head = p_new_trans->get_next();
+    p_head = p_new_trans;
   }
   else
   {
@@ -159,7 +159,7 @@ void History::insert(Transaction *p_new_trans)
       temp = temp->get_next();
     }
     temp->set_next(p_new_trans);
-  }
+  }*/
 }
 
 // sort_by_date(): Sort the linked list by trade date.
