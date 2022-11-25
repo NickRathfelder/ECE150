@@ -127,7 +127,7 @@ History::~History()
       temp = temp->get_next();
       delete temp;
       p_head = temp;
-  }
+    }
 }
 // read_history(...): Read the transaction history from file.
 // TASK 4
@@ -192,7 +192,14 @@ double History::compute_cgl(unsigned int year)
 //
 void History::print()
 {
-
+  Transaction *temp{p_head};
+  std::cout << "========== BEGIN TRANSACTION HISTORY ============";
+  while(temp != nullptr)
+  {
+    temp->print();
+    std::cout << "\n";
+  }
+  std::cout << "========== END TRANSACTION HISTORY ============";
 }
 
 
