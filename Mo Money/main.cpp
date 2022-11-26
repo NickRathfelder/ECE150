@@ -9,5 +9,6 @@ int main()
 {
   History history{};
   history.read_history();
+  //history.print();
 }
 #endif

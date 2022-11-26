@@ -122,16 +122,17 @@ History::History():p_head{nullptr}
 //
 History::~History()
 {
+  if(p_head != nullptr)
+  {
   Transaction *temp{p_head};
     while(temp->get_next() != nullptr)
     {
       temp = temp->get_next();
-      //std::cout << "Deleted " << temp << "\n";
       delete temp;
     }
     delete p_head;
-    //std::cout << "Head deleted: " << p_head ;
     p_head = nullptr;
+  }
 }
 // read_history(...): Read the transaction history from file.
 // TASK 4
@@ -147,7 +148,6 @@ void History::read_history()
     insert(pointer);
     check = ece150::next_trans_entry();
   }
-  
   ece150::close_file();
 }
 
@@ -205,7 +205,6 @@ void History::print()
   while(temp != nullptr)
   {
     temp->print();
-    std::cout << "\n";
     temp = temp->get_next();
   }
   std::cout << "========== END TRANSACTION HISTORY ============";
