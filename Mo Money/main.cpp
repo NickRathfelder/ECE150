@@ -8,7 +8,8 @@ unsigned int Transaction::assigned_trans_id = 0;
 int main() 
 {
   History history{};
-  Transaction *pointer{new Transaction("fart",21,10,2004,true,7,530)};
-  history.insert(pointer);
+  history.read_history();
+  history.print();
+
 }
 #endif

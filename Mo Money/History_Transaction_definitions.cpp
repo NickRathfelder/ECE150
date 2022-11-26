@@ -16,6 +16,7 @@ class Transaction;
 Transaction::Transaction( std::string ticker_symbol, unsigned int day_date, unsigned int month_date, unsigned year_date, bool buy_sell_trans, unsigned int number_shares, double trans_amount)
 :symbol{ticker_symbol},day{day_date},month{month_date},year{year_date},trans_type{},shares{number_shares},amount{trans_amount},trans_id{assigned_trans_id}
 {
+  p_next = nullptr;
   assigned_trans_id +=1;
   if (buy_sell_trans == true)
   {
@@ -134,12 +135,16 @@ History::~History()
 //
 void History::read_history()
 {
+  Transaction *pointer{nullptr};
   ece150::open_file();
-  while(ece150::next_trans_entry() == true)
+  bool check{ece150::next_trans_entry()};
+  while(check == true)
   {
-    Transaction *pointer (new Transaction(ece150::get_trans_symbol(),ece150::get_trans_day(),ece150::get_trans_month(),ece150::get_trans_year(),ece150::get_trans_type(),ece150::get_trans_shares(),ece150::get_trans_amount()));
+    pointer = (new Transaction(ece150::get_trans_symbol(),ece150::get_trans_day(),ece150::get_trans_month(),ece150::get_trans_year(),ece150::get_trans_type(),ece150::get_trans_shares(),ece150::get_trans_amount()));
     insert(pointer);
+    check = ece150::next_trans_entry();
   }
+  
   ece150::close_file();
 }
 
@@ -193,11 +198,12 @@ double History::compute_cgl(unsigned int year)
 void History::print()
 {
   Transaction *temp{p_head};
-  std::cout << "========== BEGIN TRANSACTION HISTORY ============";
+  std::cout << "========== BEGIN TRANSACTION HISTORY ============\n";
   while(temp != nullptr)
   {
     temp->print();
     std::cout << "\n";
+    temp = temp->get_next();
   }
   std::cout << "========== END TRANSACTION HISTORY ============";
 }
