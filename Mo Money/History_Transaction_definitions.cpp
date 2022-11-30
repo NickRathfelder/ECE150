@@ -177,6 +177,32 @@ void History::insert(Transaction *p_new_trans)
 //
 void History::sort_by_date()
 {
+  Transaction *finalp_head{p_head};
+  while(p_head != nullptr)
+    {
+      Transaction *temp{p_head};
+      Transaction *beforeTemp{p_head};
+      while(temp->get_next() != nullptr)
+      {
+        if((*temp) < (*(temp->get_next())))
+        {
+          if(temp != p_head)
+          {
+            finalp_head = p_head->get_next();
+            beforeTemp->set_next(temp);
+            temp->set_next(temp->get_next());
+          }
+          break;
+        }
+        else
+        {
+          beforeTemp = temp;
+          temp = temp->get_next();
+        }
+      }
+      p_head = p_head->get_next();
+    }
+    p_head = finalp_head;
 
 }
 // update_acb_cgl(): Updates the ACB and CGL values.
