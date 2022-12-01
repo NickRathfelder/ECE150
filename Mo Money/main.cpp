@@ -10,9 +10,9 @@ int main()
   History history{};
   history.read_history();
   std::cout << "**Unsorted** \n";
-  history.print();
+  //history.print();
   std::cout << "**Sorted**\n";
   history.sort_by_date();
-  history.print();
+  //history.print();
 }
 #endif

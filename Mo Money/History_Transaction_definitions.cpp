@@ -172,38 +172,34 @@ void History::insert(Transaction *p_new_trans)
   }
 }
 
+void History::swap(Transaction *first, Transaction *second)
+{
+  Transaction *temp{second->get_next()};
+  second->set_next(first);
+  first->set_next(temp);
+}
 // sort_by_date(): Sort the linked list by trade date.
 // TASK 6
 //
 void History::sort_by_date()
 {
+  int cycle{1};
   Transaction *finalp_head{p_head};
-  while(p_head != nullptr)
+  while(p_head->get_next() != nullptr)
+  {
+    std::cout << "Entry " << cycle << "\n";
+    cycle+=1;
+    while((*(p_head->get_next())) < (*p_head))
     {
-      Transaction *temp{p_head};
-      Transaction *beforeTemp{p_head};
-      while(temp->get_next() != nullptr)
-      {
-        if((*temp) < (*(temp->get_next())))
-        {
-          if(temp != p_head)
-          {
-            finalp_head = p_head->get_next();
-            beforeTemp->set_next(temp);
-            temp->set_next(temp->get_next());
-          }
-          break;
-        }
-        else
-        {
-          beforeTemp = temp;
-          temp = temp->get_next();
-        }
-      }
-      p_head = p_head->get_next();
+      swap(p_head,p_head->get_next());
+      std::cout << "SWAP";
     }
-    p_head = finalp_head;
-
+    p_head = p_head->get_next();
+    std::cout << "in while";
+    std::cout << "Head next is" << p_head->get_next();
+  }
+  p_head = finalp_head;
+  std::cout << "Finished";
 }
 // update_acb_cgl(): Updates the ACB and CGL values.
 // TASK 7

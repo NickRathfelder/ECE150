@@ -25,6 +25,7 @@ public:
 	//
 	void insert(Transaction *p_new_trans);
 
+	void swap(Transaction *current, Transaction *previous);
 	// Sort using insertion sort.
 	//
 	void sort_by_date();
