@@ -176,7 +176,20 @@ void History::insert(Transaction *p_new_trans)
 //
 void History::sort_by_date()
 {
-  
+  while(p_head->get_next() != nullptr)
+  {
+    Transaction *current{p_head};
+    Transaction *temp{p_head};
+    p_head = p_head->get_next();
+    while((temp->get_next() != nullptr) && ((*temp->get_next()) < (*current)))
+    {
+      temp = temp->get_next();
+    }
+    //insert at temp
+    current->set_next(temp->get_next());
+    temp->set_next(current);
+  }
+
 }
 // update_acb_cgl(): Updates the ACB and CGL values.
 // TASK 7
