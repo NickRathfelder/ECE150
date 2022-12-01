@@ -115,7 +115,7 @@ class History;
 // Constructor
 // TASK 3
 //
-History::History():p_head{nullptr}
+History::History():p_head{nullptr},p_Final{nullptr}
 {}
 // Destructor
 // TASK 3
@@ -171,25 +171,38 @@ void History::insert(Transaction *p_new_trans)
     temp->set_next(p_new_trans);
   }
 }
+
+void History::insertSort(Transaction *current)
+{
+  if ((p_Final == nullptr) || (*(current) < *(p_Final)))
+  {
+    current->set_next(p_Final);
+    p_Final = current;
+  }
+  else
+  {
+    Transaction *temp{p_Final};
+    while((temp->get_next() != nullptr) && (*(temp->get_next()) < *current))
+    {
+      temp = temp->get_next();
+    }
+    current->set_next(temp->get_next());
+    temp->set_next(current);
+  }
+}
 // sort_by_date(): Sort the linked list by trade date.
 // TASK 6
 //
 void History::sort_by_date()
 {
-  while(p_head->get_next() != nullptr)
+  Transaction *current{p_head};
+  while(current != nullptr)
   {
-    Transaction *current{p_head};
-    Transaction *temp{p_head};
-    p_head = p_head->get_next();
-    while((temp->get_next() != nullptr) && ((*temp->get_next()) < (*current)))
-    {
-      temp = temp->get_next();
-    }
-    //insert at temp
-    current->set_next(temp->get_next());
-    temp->set_next(current);
+    Transaction *next = current->get_next();
+    insertSort(current);
+    current = next;
   }
-
+  p_head = p_Final;
 }
 // update_acb_cgl(): Updates the ACB and CGL values.
 // TASK 7
@@ -204,7 +217,19 @@ void History::update_acb_cgl()
 // TASK 8
 double History::compute_cgl(unsigned int year)
 {
+  Transaction *temp{p_head};
+  while(temp != nullptr)
+  {
+    if(temp->get_trans_type() == true)//buy
+    {
 
+    }
+    else//sell
+    {
+
+    }
+    temp = temp->get_next()
+  }
 }
 
 // print() Print the transaction history.
