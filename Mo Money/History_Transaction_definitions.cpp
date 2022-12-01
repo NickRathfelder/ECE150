@@ -171,35 +171,12 @@ void History::insert(Transaction *p_new_trans)
     temp->set_next(p_new_trans);
   }
 }
-
-void History::swap(Transaction *first, Transaction *second)
-{
-  Transaction *temp{second->get_next()};
-  second->set_next(first);
-  first->set_next(temp);
-}
 // sort_by_date(): Sort the linked list by trade date.
 // TASK 6
 //
 void History::sort_by_date()
 {
-  int cycle{1};
-  Transaction *finalp_head{p_head};
-  while(p_head->get_next() != nullptr)
-  {
-    std::cout << "Entry " << cycle << "\n";
-    cycle+=1;
-    while((*(p_head->get_next())) < (*p_head))
-    {
-      swap(p_head,p_head->get_next());
-      std::cout << "SWAP";
-    }
-    p_head = p_head->get_next();
-    std::cout << "in while";
-    std::cout << "Head next is" << p_head->get_next();
-  }
-  p_head = finalp_head;
-  std::cout << "Finished";
+  
 }
 // update_acb_cgl(): Updates the ACB and CGL values.
 // TASK 7
