@@ -115,7 +115,7 @@ class History;
 // Constructor
 // TASK 3
 //
-History::History():p_head{nullptr},p_Final{nullptr}
+History::History():p_head{nullptr}
 {}
 // Destructor
 // TASK 3
@@ -171,35 +171,31 @@ void History::insert(Transaction *p_new_trans)
     temp->set_next(p_new_trans);
   }
 }
-
-void History::insertSort(Transaction *current)
-{
-  if ((p_Final == nullptr) || (*(current) < *(p_Final)))
-  {
-    current->set_next(p_Final);
-    p_Final = current;
-  }
-  else
-  {
-    Transaction *temp{p_Final};
-    while((temp->get_next() != nullptr) && (*(temp->get_next()) < *current))
-    {
-      temp = temp->get_next();
-    }
-    current->set_next(temp->get_next());
-    temp->set_next(current);
-  }
-}
 // sort_by_date(): Sort the linked list by trade date.
 // TASK 6
 //
 void History::sort_by_date()
 {
+  Transaction *p_Final{nullptr};
   Transaction *current{p_head};
   while(current != nullptr)
   {
     Transaction *next = current->get_next();
-    insertSort(current);
+    if ((p_Final == nullptr) || (*(current) < *(p_Final)))
+    {
+      current->set_next(p_Final);
+      p_Final = current;
+    }
+    else
+    {
+      Transaction *temp{p_Final};
+      while((temp->get_next() != nullptr) && (*(temp->get_next()) < *current))
+      {
+        temp = temp->get_next();
+      }
+      current->set_next(temp->get_next());
+      temp->set_next(current);
+    }
     current = next;
   }
   p_head = p_Final;
@@ -209,27 +205,46 @@ void History::sort_by_date()
 //
 void History::update_acb_cgl()
 {
-
-}
-
-
-// compute_cgl(): )Compute the ACB, and CGL.
-// TASK 8
-double History::compute_cgl(unsigned int year)
-{
+  double acb{0};
+  double balance{0};
+  double acb_Share{0};
   Transaction *temp{p_head};
   while(temp != nullptr)
   {
     if(temp->get_trans_type() == true)//buy
     {
-
+      acb += temp->get_amount();
+      balance += temp->get_shares();
     }
     else//sell
     {
-
+      acb -= (temp->get_shares())*(acb_Share);
+      balance-= temp->get_shares();
+      temp->set_cgl(temp->get_amount() - (temp->get_shares())*(acb_Share));
     }
-    temp = temp->get_next()
+    acb_Share = acb/balance;
+    temp->set_acb(acb);
+    temp->set_share_balance(balance);
+    temp->set_acb_per_share(acb_Share);
+    temp = temp->get_next();
   }
+}
+// compute_cgl(): )Compute the ACB, and CGL.
+// TASK 8
+double History::compute_cgl(unsigned int year)
+{
+  Transaction *temp{p_head};
+  double cgl{0};
+  while(temp!= nullptr)
+  {
+    if(temp->get_trans_type() == false)
+    {
+      temp->set_cgl(temp->get_amount() - (temp->get_shares())*(temp->get_acb_per_share()));
+    }
+    if (temp->get_year() == year) cgl += temp->get_cgl();
+    temp = temp->get_next();
+  }
+  return cgl;
 }
 
 // print() Print the transaction history.

@@ -24,11 +24,8 @@ public:
 	// Insert transaction in linked list.
 	//
 	void insert(Transaction *p_new_trans);
-
-	void swap(Transaction *current, Transaction *previous);
 	// Sort using insertion sort.
 	//
-	void insertSort(Transaction *current);
 	void sort_by_date();
 
 	// Update the acb members in the linked list.
@@ -47,7 +44,6 @@ public:
 
 private:
 	Transaction *p_head;
-	Transaction *p_Final;
 };
 
 #endif
